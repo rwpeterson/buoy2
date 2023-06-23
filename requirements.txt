@@ -1,0 +1,8 @@
+fastapi
+pytz
+Jinja2
+jinja2-fragments
+SQLAlchemy
+sqlalchemy_utc
+python-multipart
+uvicorn
