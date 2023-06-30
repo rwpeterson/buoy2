@@ -1,0 +1,23 @@
+{% extends 'shared/base.html' %}
+{% block main_content %}
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Average wave height</th>
+            <th>Max wave height</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% block summary_rows %}
+        {% for day in day_summaries %}
+        <tr>
+            <td>{{ day.date }}</td>
+            <td>{{ day.average_wave_height|round(1) }}</td>
+            <td>{{ day.max_wave_height }}</td>
+        </tr>
+        {% endfor %}
+        {% endblock %}
+    </tbody>
+</table>
+{% endblock %}

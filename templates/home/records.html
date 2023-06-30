@@ -1,0 +1,33 @@
+{% extends 'shared/base.html' %}
+{% block main_content %}
+<table>
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Height (m)</th>
+            <th>Direction (deg)</th>
+            <th>Period (s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% block table_swap %}
+        {% for record in records %}
+        <tr>
+            <td>{{ record.timestamp }}</td>
+            <td>{{ record.wave_height }}</td>
+            <td>{{ record.mean_wave_direction }}</td>
+            <td>{{ record.dominant_wave_period }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan='4'>
+                <button
+                    hx-get='/records?page={{ page + 1 }}'
+                    hx-target='closest tr'
+                    hx-swap='outerHTML'>Load more</button>
+            </td>
+        </tr>
+        {% endblock %}
+    </tbody>
+</table>
+{% endblock %}
